@@ -10,7 +10,7 @@ interface ProjectCardProps {
   project: Project;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => (
+export const ProjectCard = ({ project }: ProjectCardProps) => (
   <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
     <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
       <h3 className="text-lg md:text-xl font-semibold text-gray-800">{project.name}</h3>

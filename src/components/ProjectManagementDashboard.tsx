@@ -37,7 +37,7 @@ interface Filters {
 
 
 
-export const ProjectManagementDashboard: React.FC = () => {
+export const ProjectManagementDashboard = () => {
   const [tasks, setTasks] = useState<Task[]>(initialTasks);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [editingTask, setEditingTask] = useState<Task | null>(null);

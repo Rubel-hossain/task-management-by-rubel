@@ -1,4 +1,3 @@
-import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import TaskCard from "./TaskCard";
 import { Task } from "../types/Task";
@@ -8,7 +7,7 @@ interface KanbanColumnProps {
   tasks: Task[];
 }
 
-const KanbanColumn: React.FC<KanbanColumnProps> = ({ status, tasks }) => {
+export const KanbanColumn = ({ status, tasks }: KanbanColumnProps) => {
   return (
     <Droppable droppableId={status}>
       {(provided, snapshot) => (

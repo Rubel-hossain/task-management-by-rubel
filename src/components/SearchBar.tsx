@@ -7,12 +7,12 @@ interface SearchBarProps {
   setIsMobileSearchVisible: (visible: boolean) => void;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({
+export const SearchBar = ({
   searchQuery,
   setSearchQuery,
   isMobileSearchVisible,
   setIsMobileSearchVisible,
-}) => (
+}: SearchBarProps) => (
   <div className="flex items-center gap-4">
     <button
       className="md:hidden text-gray-600"
@@ -20,7 +20,11 @@ export const SearchBar: React.FC<SearchBarProps> = ({
     >
       <FiSearch className="w-5 h-5" />
     </button>
-    <div className={`relative w-full md:w-auto ${isMobileSearchVisible ? "block" : "hidden md:block"}`}>
+    <div
+      className={`relative w-full md:w-auto ${
+        isMobileSearchVisible ? "block" : "hidden md:block"
+      }`}
+    >
       <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
       <input
         type="text"

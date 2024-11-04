@@ -2,10 +2,12 @@ import React from "react";
 
 interface TaskFiltersProps {
   filters: Record<"To Do" | "In Progress" | "Completed", string>;
-  setFilters: React.Dispatch<React.SetStateAction<Record<"To Do" | "In Progress" | "Completed", string>>>;
+  setFilters: React.Dispatch<
+    React.SetStateAction<Record<"To Do" | "In Progress" | "Completed", string>>
+  >;
 }
 
-const TaskFilters: React.FC<TaskFiltersProps> = ({ filters, setFilters }) => (
+const TaskFilters = ({ filters, setFilters }: TaskFiltersProps) => (
   <div className="flex items-center gap-2">
     {Object.keys(filters).map((status) => (
       <select

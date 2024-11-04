@@ -1,5 +1,16 @@
-import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
-import { FiEdit2, FiTrash2, FiCalendar, FiFlag, FiFilter } from "react-icons/fi";
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  DropResult,
+} from "react-beautiful-dnd";
+import {
+  FiEdit2,
+  FiTrash2,
+  FiCalendar,
+  FiFlag,
+  FiFilter,
+} from "react-icons/fi";
 
 interface Task {
   id: string;
@@ -14,7 +25,7 @@ interface Task {
 interface Filters {
   "To Do": string;
   "In Progress": string;
-  "Completed": string;
+  Completed: string;
 }
 
 interface KanbanBoardProps {
@@ -27,14 +38,14 @@ interface KanbanBoardProps {
   handleDragEnd: (result: DropResult) => void;
 }
 
-const KanbanBoard: React.FC<KanbanBoardProps> = ({
+export const KanbanBoard = ({
   filters,
   setFilters,
   filteredTasks,
   handleEdit,
   handleDelete,
   handleDragEnd,
-}) => (
+}: KanbanBoardProps) => (
   <DragDropContext onDragEnd={handleDragEnd}>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto">
       {["To Do", "In Progress", "Completed"].map((column) => (
@@ -53,7 +64,9 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
                   <FiFilter className="text-gray-500" />
                   <select
                     value={filters[column as keyof Filters]}
-                    onChange={(e) => setFilters({ ...filters, [column]: e.target.value })}
+                    onChange={(e) =>
+                      setFilters({ ...filters, [column]: e.target.value })
+                    }
                     className="text-sm border rounded-md px-2 py-1"
                   >
                     <option value="all">All Priorities</option>
@@ -71,19 +84,29 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       className={`bg-white p-3 md:p-4 rounded-lg shadow-sm mb-3 ${
-                        snapshot.isDragging ? "shadow-lg border-2 border-blue-500" : ""
+                        snapshot.isDragging
+                          ? "shadow-lg border-2 border-blue-500"
+                          : ""
                       }`}
                     >
                       <div className="flex justify-between items-start gap-2">
                         <div className="flex-1 min-w-0">
                           <h4 className="font-medium truncate">{task.title}</h4>
-                          <p className="text-sm text-gray-600 mt-2 line-clamp-2">{task.description}</p>
+                          <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                            {task.description}
+                          </p>
                         </div>
                         <div className="flex gap-2 flex-shrink-0">
-                          <button onClick={() => handleEdit(task)} className="text-blue-600 hover:text-blue-800">
+                          <button
+                            onClick={() => handleEdit(task)}
+                            className="text-blue-600 hover:text-blue-800"
+                          >
                             <FiEdit2 />
                           </button>
-                          <button onClick={() => handleDelete(task.id)} className="text-red-600 hover:text-red-800">
+                          <button
+                            onClick={() => handleDelete(task.id)}
+                            className="text-red-600 hover:text-red-800"
+                          >
                             <FiTrash2 />
                           </button>
                         </div>
@@ -104,7 +127,9 @@ const KanbanBoard: React.FC<KanbanBoardProps> = ({
                                   : "text-green-500"
                               }`}
                             />
-                            <span className="text-sm text-gray-600">{task.priority}</span>
+                            <span className="text-sm text-gray-600">
+                              {task.priority}
+                            </span>
                           </div>
                         </div>
                         <div className="flex -space-x-2">

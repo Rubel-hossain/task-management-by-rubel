@@ -17,7 +17,7 @@ interface EditTaskModalProps {
   onUpdate: (updatedTask: Task) => void;
 }
 
-export const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, onClose, onUpdate }) => {
+export const EditTaskModal = ({ task, onClose, onUpdate }: EditTaskModalProps) => {
   
   const [formData, setFormData] = useState<Task>(task);
 

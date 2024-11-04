@@ -1,4 +1,3 @@
-import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Task } from "../types/Task";
 import { FiCalendar, FiFlag } from "react-icons/fi";
@@ -8,7 +7,7 @@ interface TaskCardProps {
   index: number;
 }
 
-const TaskCard: React.FC<TaskCardProps> = ({ task, index }) => {
+export const TaskCard = ({ task, index }: TaskCardProps) => {
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
